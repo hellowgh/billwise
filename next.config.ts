@@ -3,8 +3,7 @@ import path from 'path';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  experimental: {
-  },
+  experimental: {},
   webpack(config) {
     config.resolve.alias['@'] = path.resolve(__dirname, 'apps/web');
     return config;

@@ -3,13 +3,20 @@
   "compilerOptions": {
     "noEmit": true,
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"]
+    "types": ["node"],
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "target": "ESNext"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [".", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next"]
 }

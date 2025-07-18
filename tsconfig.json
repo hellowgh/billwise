@@ -4,7 +4,8 @@
     "paths": {
       "@web/*": ["apps/web/*"],
       "@prisma/*": ["prisma/*"],
-      "@scripts/*": ["scripts/*"]
+      "@scripts/*": ["scripts/*"],
+      "@/billwise/db": ["packages/db/src"]
     },
     "module": "esnext",
     "target": "es2017",

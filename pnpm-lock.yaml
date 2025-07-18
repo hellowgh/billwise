@@ -79,6 +79,18 @@ importers:
         specifier: ^5
         version: 5.8.3
 
+  apps/web:
+    dependencies:
+      '@billwise/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+
+  packages/db: {}
+
+  packages/scripts: {}
+
+  packages/utils: {}
+
 packages:
 
   '@alloc/quick-lru@5.2.0':
