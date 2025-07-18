@@ -1,16 +1,16 @@
-import { prisma } from '@billwise/db';
+// import { prisma } from '@billwise/db';
 
-async function seed() {
-  console.log('Seeding database...');
+// async function seed() {
+//   console.log('Seeding database...');
 
-  await prisma.user.create({
-    data: {
-      name: 'Admin',
-      email: 'admin@billwise.com',
-    },
-  });
+//   await prisma.user.create({
+//     data: {
+//       name: 'Admin',
+//       email: 'admin@billwise.com',
+//     },
+//   });
 
-  console.log('Done.');
-}
+//   console.log('Done.');
+// }
 
-seed().catch(console.error);
+// seed().catch(console.error);

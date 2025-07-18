@@ -18,5 +18,6 @@
     "target": "ESNext"
   },
   "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"]
+  "exclude": ["node_modules", ".next"],
+  "references": [{ "path": "../../packages/db" }]
 }
