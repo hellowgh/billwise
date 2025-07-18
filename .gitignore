@@ -10,6 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
+# Next.js build output
+# See https://nextjs.org/docs/api-reference/cli#output-directory
+.next/
+dist/
+out/
+
 # testing
 /coverage
 
