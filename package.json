@@ -2,6 +2,10 @@
   "name": "billwise",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev apps/web",
     "build": "next build",
