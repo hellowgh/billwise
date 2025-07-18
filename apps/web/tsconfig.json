@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "preserve",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node"],
+    "allowJs": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "target": "ESNext"
+  },
+  "include": [".", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next"]
+}
