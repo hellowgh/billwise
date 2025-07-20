@@ -50,3 +50,6 @@ next-env.d.ts
 /app/generated/prisma
 
 .turbo/
+
+migration.*
+migration_lock.*
