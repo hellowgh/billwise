@@ -1,11 +1,11 @@
 import { z } from 'zod';
 import { publicProcedure, createTRPCRouter } from '../trpc';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@billwise/db';
 import bcrypt from 'bcryptjs';
 
 // verify user's email and password
 const registerSchema = z.object({
-  email: z.email(),
+  email: z.string().email(),
   password: z.string().min(6, 'pwd must be at least 6 characters long'),
 });
 
