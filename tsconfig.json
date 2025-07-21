@@ -19,5 +19,6 @@
       "@billwise/utils": ["packages/utils/src/index.ts"]
     }
   },
+  "references": [{ "path": "packages/db" }, { "path": "packages/trpc" }],
   "exclude": ["node_modules", "dist", ".next"]
 }
