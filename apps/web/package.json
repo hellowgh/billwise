@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@billwise/db": "workspace:*",
-    "@billwise/utils": "workspace:*"
+    "@billwise/utils": "workspace:*",
+    "@billwise/trpc": "workspace:*"
   }
 }

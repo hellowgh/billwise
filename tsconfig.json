@@ -12,13 +12,16 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true, // 顶层 tsconfig 不负责 emit
     "paths": {
       // 主要用于IDE提示，不负责运行期路径重写，构建产物路径还是靠 tsc 的 outDir
       "@billwise/db": ["packages/db/src/index.ts"],
       "@billwise/utils": ["packages/utils/src/index.ts"]
     }
   },
-  "references": [{ "path": "packages/db" }, { "path": "packages/trpc" }],
+  "references": [
+    { "path": "packages/db" },
+    { "path": "packages/trpc" },
+    { "path": "packages/utils" }
+  ],
   "exclude": ["node_modules", "dist", ".next"]
 }
