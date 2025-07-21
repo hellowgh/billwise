@@ -1,28 +1,24 @@
+// tsconfig.json
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
-    "baseUrl": ".",
-    "moduleResolution": "Node",
-    "allowJs": false,
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "paths": {
-      // 主要用于IDE提示，不负责运行期路径重写，构建产物路径还是靠 tsc 的 outDir
-      "@billwise/db": ["packages/db/src/index.ts"],
-      "@billwise/utils": ["packages/utils/src/index.ts"],
-      "@billwise/trpc": ["packages/trpc/src/index.ts"]
-    }
-  },
+  "files": [],
   "references": [
     { "path": "packages/db" },
     { "path": "packages/trpc" },
-    { "path": "packages/utils" }
+    { "path": "packages/utils" },
+    { "path": "apps/web" }
   ],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".", // 不建议加 paths
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "outDir": "dist"
+  },
   "exclude": ["node_modules", "dist", ".next"]
 }

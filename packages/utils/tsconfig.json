@@ -6,7 +6,6 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
-    "baseUrl": ".",
     "outDir": "dist",
     "paths": {
       "@billwise/utils": ["./src"]

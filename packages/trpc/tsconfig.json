@@ -2,15 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "baseUrl": ".", // 必须有："paths"相对于此
     "outDir": "dist",
+    "rootDir": "src",
     "paths": {
-      "@billwise/db": ["../db/src"],
-      "@billwise/trpc": ["./src"]
+      "@billwise/db": ["../db/src"]
     }
   },
   "include": ["src"],
-  "references": [
-    { "path": "../db" } // ✅ 必须引用 db
-  ]
+  "references": [{ "path": "../db" }]
 }

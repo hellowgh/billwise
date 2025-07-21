@@ -1,28 +1,36 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
-    "jsx": "preserve",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
+    "jsx": "preserve", // support jsx
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["node"],
+    "paths": {
+      "@billwise/trpc": ["../../packages/trpc/src"],
+      "@billwise/db": ["../../packages/db/src"],
+      "@billwise/utils": ["../../packages/utils/src"]
+    },
     "allowJs": true,
-    "baseUrl": ".",
+    "incremental": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "target": "ESNext"
+    ]
   },
-  "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"],
-  "paths": {
-    "@billwise/trpc": ["../../packages/trpc/src"],
-    "@billwise/db": ["../../packages/db/src"]
-  },
-  "references": [{ "path": "../../packages/db" }, { "path": "../../packages/trpc" }]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "references": [
+    {
+      "path": "../../packages/db"
+    },
+    {
+      "path": "../../packages/trpc"
+    },
+    {
+      "path": "../../packages/utils"
+    }
+  ],
+  "exclude": ["node_modules"]
 }
