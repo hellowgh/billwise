@@ -2,14 +2,15 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "baseUrl": ".",
+    "baseUrl": ".", // 必须有："paths"相对于此
     "outDir": "dist",
     "paths": {
+      "@billwise/db": ["../db/src"],
       "@billwise/trpc": ["./src"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    { "path": "../db" } // ✅ 必须引用 db
+  ]
 }

@@ -10,6 +10,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["node"],
     "allowJs": true,
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
@@ -19,5 +20,9 @@
   },
   "include": [".", ".next/types/**/*.ts"],
   "exclude": ["node_modules", ".next"],
-  "references": [{ "path": "../../packages/db" }]
+  "paths": {
+    "@billwise/trpc": ["../../packages/trpc/src"],
+    "@billwise/db": ["../../packages/db/src"]
+  },
+  "references": [{ "path": "../../packages/db" }, { "path": "../../packages/trpc" }]
 }
