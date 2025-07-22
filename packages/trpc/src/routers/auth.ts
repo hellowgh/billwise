@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 
 // verify user's email and password
 const registerSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string().min(6, 'pwd must be at least 6 characters long'),
 });
 
