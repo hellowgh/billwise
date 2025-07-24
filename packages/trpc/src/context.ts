@@ -1,5 +1,9 @@
-/**
- * 提供请求时的上下文，比如用户信息、请求头等。
- */
+import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 
-export type Context = {};
+export function createContext(opts: CreateNextContextOptions) {
+  return {
+    userId: 'mocked user',
+  };
+}
+
+export type TRPCContext = Awaited<ReturnType<typeof createContext>>;

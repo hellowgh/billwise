@@ -1,7 +1,8 @@
-import { publicProcedure, router } from '../trpc';
+import { protectedProcedure } from './../protectedProcedure';
+import { router } from '../trpc';
 
 export const testRouter = router({
-  hello: publicProcedure.query(() => {
-    return { message: 'hello trpc' };
+  hello: protectedProcedure.query(({ ctx }) => {
+    return { message: `hello ${ctx.userId}` };
   }),
 });
