@@ -5,12 +5,14 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "baseUrl": ".",
     "strict": true,
     "outDir": "dist",
     "paths": {
-      "@billwise/utils": ["./src"]
+      "@billwise/trpc": ["../trpc/src"]
     },
     "skipLibCheck": true
   },
+  "references": [{ "path": "../trpc" }],
   "include": ["src"]
 }

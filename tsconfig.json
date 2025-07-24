@@ -17,6 +17,7 @@
     "strictNullChecks": true, // 严格区分 null 和 undefined
     "declaration": true, // 生成 .d.ts 类型声明（供其他包使用）
     "target": "ESNext",
+    "strictNullChecks": true,
     "strict": true,
     "skipLibCheck": true, // 跳过三方库检查
     "noEmit": false, // true:
