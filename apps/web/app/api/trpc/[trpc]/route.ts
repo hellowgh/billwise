@@ -1,5 +1,5 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import { appRouter } from '@billwise/trpc';
+import { appRouter, createContext } from '@billwise/trpc';
 import { NextRequest } from 'next/server';
 
 const handler = (req: NextRequest) => {
@@ -7,7 +7,7 @@ const handler = (req: NextRequest) => {
     endpoint: '/api/trpc',
     req,
     router: appRouter,
-    createContext: () => ({}), // 简化：无 auth
+    createContext,
   });
 };
 
