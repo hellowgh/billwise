@@ -3,6 +3,6 @@ import { router } from '../trpc';
 
 export const testRouter = router({
   hello: protectedProcedure.query(({ ctx }) => {
-    return { message: `hello ${ctx.userId}` };
+    return `Hello ${ctx.userId}`;
   }),
 });

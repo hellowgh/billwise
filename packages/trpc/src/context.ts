@@ -1,9 +1,12 @@
-import { CreateNextContextOptions } from '@trpc/server/adapters/next';
+/**
+ * 提供请求时的上下文，比如用户信息、请求头等。
+ */
 
-export function createContext(opts: CreateNextContextOptions) {
+export function createContext() {
+  // mock
   return {
-    userId: 'mocked user',
+    userId: 'anonymous-user',
   };
 }
 
-export type TRPCContext = Awaited<ReturnType<typeof createContext>>;
+export type Context = Awaited<ReturnType<typeof createContext>>;
