@@ -8,16 +8,18 @@
     { "path": "apps/web" }
   ],
   "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".", // 不建议加 paths
+    "composite": true, // 支持项目引用
+    "baseUrl": ".", // . - 相较于当前 tsconfig.json 文件所在目录
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
-    "esModuleInterop": true,
+    "esModuleInterop": true, // 兼容 CommonJS 默认导入
     "moduleResolution": "Node",
+    "strictNullChecks": true, // 严格区分 null 和 undefined
+    "declaration": true, // 生成 .d.ts 类型声明（供其他包使用）
     "target": "ESNext",
     "strict": true,
-    "skipLibCheck": true,
-    "noEmit": false,
+    "skipLibCheck": true, // 跳过三方库检查
+    "noEmit": false, // true:
     "outDir": "dist"
   },
   "exclude": ["node_modules", "dist", ".next"]
