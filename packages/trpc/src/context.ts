@@ -1,8 +1,9 @@
 /**
  * 提供请求时的上下文，比如用户信息、请求头等。
  */
-import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { type NextRequest } from 'next/server';
 
+// notation: @trpc/server/adapters/next 中的 CreateNextContextOptions 是专门为旧版 pages/api 设计的，不要用
 function getCookieFromHeader(header: string, key: string): string | null {
   return (
     header
@@ -13,14 +14,16 @@ function getCookieFromHeader(header: string, key: string): string | null {
   );
 }
 
-export async function createContext(opts: CreateNextContextOptions) {
-  const headers = opts.req.headers as unknown as Headers;
-  const cookie = headers.get('cookie') ?? '';
+export async function createContext({ req }: { req: NextRequest }) {
+  const cookie = req.headers.get('cookie') ?? '';
   const userId = getCookieFromHeader(cookie, 'user-id');
+
+  const resHeaders = new Headers();
 
   // mock
   return {
     userId: userId ?? null,
+    resHeaders,
   };
 }
 

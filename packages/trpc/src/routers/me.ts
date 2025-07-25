@@ -2,10 +2,12 @@ import { router } from '../trpc';
 import { protectedProcedure } from '../protectedProcedure';
 
 export const meRouter = router({
-  get: protectedProcedure.query(({ ctx }) => {
+  me: protectedProcedure.query(async ({ ctx }) => {
+    // mock
     return {
-      userId: ctx.userId,
-      status: 'Logged in (mock)',
+      id: ctx.userId,
+      name: 'Mock User',
+      email: 'mock@example.com',
     };
   }),
 });
