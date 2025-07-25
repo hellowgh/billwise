@@ -4,10 +4,7 @@ import { trpc } from '@billwise/utils';
 import { useEffect, useState } from 'react';
 
 export default function Page() {
-  const { data, refetch } = trpc.me.get.useQuery(undefined, {
-    retry: false,
-    refetchOnMount: false,
-  });
+  const { data, refetch } = trpc.me.get.useQuery();
 
   useEffect(() => {
     if (data) {

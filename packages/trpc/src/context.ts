@@ -13,8 +13,9 @@ function getCookieFromHeader(header: string, key: string): string | null {
   );
 }
 
-export function createContext(opts: CreateNextContextOptions) {
-  const cookie = opts.req.headers.get('cookie') ?? '';
+export async function createContext(opts: CreateNextContextOptions) {
+  const headers = opts.req.headers as unknown as Headers;
+  const cookie = headers.get('cookie') ?? '';
   const userId = getCookieFromHeader(cookie, 'user-id');
 
   // mock
