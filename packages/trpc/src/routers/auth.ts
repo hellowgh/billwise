@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { publicProcedure, createTRPCRouter } from '../trpc';
+import { publicProcedure, router } from '../trpc';
 import { prisma } from '@billwise/db';
 import bcrypt from 'bcryptjs';
 
@@ -9,7 +9,7 @@ const registerSchema = z.object({
   password: z.string().min(6, 'pwd must be at least 6 characters long'),
 });
 
-export const authRouter = createTRPCRouter({
+export const authRouter = router({
   register: publicProcedure.input(registerSchema).mutation(async ({ input }) => {
     const { email, password } = input;
 
