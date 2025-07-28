@@ -14,7 +14,8 @@ export default function RegisterPage() {
 
   const doRegister = async (data: typeof form) => {
     try {
-      await register.mutate(data);
+      const res = await register.mutateAsync(data);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
