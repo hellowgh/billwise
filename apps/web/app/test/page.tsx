@@ -1,52 +1,51 @@
 'use client';
 
 import { trpc } from '@billwise/utils';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-export default function Page() {
-  const { data, refetch } = trpc.user.me.useQuery();
-
-  useEffect(() => {
-    if (data) {
-      console.log('User info:', data);
-    }
-  }, [data]);
-
-  const utils = trpc.useUtils();
-  const loginMutation = trpc.auth.login.useMutation({
-    onSuccess() {
-      utils.user.me.invalidate();
-    },
+export default function RegisterPage() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
   });
 
-  const [status, setStatus] = useState('');
+  const register = trpc.auth.register.useMutation();
 
-  const login = async () => {
-    const res = await fetch('/api/mock-login?userId=abc123', {
-      credentials: 'include',
-    });
-    const json = await res.json();
-    setStatus(json.status);
-    await refetch();
+  const doRegister = async (data: typeof form) => {
+    try {
+      await register.mutate(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const [name, setName] = useState('');
-
   return (
-    <div>
-      <h2>User: {data?.name ?? 'Not Logged In'}</h2>
-      <h2>name: {name}</h2>
+    <div className="p-4">
+      <h1 className="text-xl mb-2">Register</h1>
+
       <input
-        onChange={e => setName(e.target.value)}
-        value={name}
-        placeholder="Enter name"
-        className="border p-2"
+        placeholder="Name"
+        className="border p-2 mb-2 block"
+        value={form.name}
+        onChange={e => setForm({ ...form, name: e.target.value })}
       />
-      <button
-        onClick={() => loginMutation.mutate({ name })}
-        className="ml-2 px-4 py-2 bg-blue-500 text-white"
-      >
-        Login
+      <input
+        placeholder="Email"
+        className="border p-2 mb-2 block"
+        value={form.email}
+        onChange={e => setForm({ ...form, email: e.target.value })}
+      />
+      <input
+        placeholder="Password"
+        type="password"
+        className="border p-2 mb-2 block"
+        value={form.password}
+        onChange={e => setForm({ ...form, password: e.target.value })}
+      />
+
+      <button onClick={() => doRegister(form)} className="bg-blue-600 text-white px-4 py-2 rounded">
+        Register
       </button>
     </div>
   );
