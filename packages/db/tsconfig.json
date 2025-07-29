@@ -1,6 +1,6 @@
 // packages/db/tsconfig.json
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",

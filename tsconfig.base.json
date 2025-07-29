@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "baseUrl": ".", // 别名路径的参考基准
+    "paths": {
+      "@billwise/trpc": ["packages/trpc/src"],
+      "@billwise/db": ["packages/db/src"],
+      "@billwise/utils": ["packages/utils/src"]
+    }
+  }
+}

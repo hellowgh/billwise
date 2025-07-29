@@ -1,27 +1,30 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "preserve", // support jsx
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"],
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["app/*"],
       "@billwise/trpc": ["../../packages/trpc/src"],
       "@billwise/db": ["../../packages/db/src"],
       "@billwise/utils": ["../../packages/utils/src"]
     },
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node"],
     "allowJs": true,
     "incremental": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "noEmit": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": ["app", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", ".next"],
   "references": [
     {
       "path": "../../packages/db"
@@ -32,6 +35,5 @@
     {
       "path": "../../packages/utils"
     }
-  ],
-  "exclude": ["node_modules"]
+  ]
 }
