@@ -59,19 +59,46 @@ export const authRouter = router({
   login: publicProcedure
     .input(
       z.object({
-        name: z.string().min(1),
+        email: z.email(),
+        password: z.string(),
       })
     )
-    .mutation(({ ctx, input }) => {
-      const userId = 'mock-user-123';
+    .mutation(async ({ ctx, input }) => {
+      const { email, password } = input;
+
+      const user = await prisma.user.findUnique({
+        where: {
+          email,
+        },
+      });
+
+      if (!user) {
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
+          message: 'email or pwd is incorrect',
+        });
+      }
+
+      const isValid = await bcrypt.compare(password, user.hashedPassword);
+
+      if (!isValid) {
+        throw new TRPCError({
+          code: 'UNAUTHORIZED',
+          message: 'email or pwd is incorrect',
+        });
+      }
+
+      const { id } = user;
 
       // set cookie
-      ctx.resHeaders.set('Set-Cookie', `user-id=${userId}; Path=/; HttpOnly`);
+      ctx.resHeaders.set('Set-Cookie', `user-id=${id}; Path=/; HttpOnly`);
+      ctx.userId = id;
 
       return {
         success: true,
-        userId,
-        name: input.name,
+        userId: id,
+        name: user.name,
+        id,
       };
     }),
 });
